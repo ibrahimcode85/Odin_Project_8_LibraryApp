@@ -8,17 +8,42 @@ function Book(title, author, pages, read){
 };
 
 // temporary user input
-const title = 'A Field Guide to Lies';
-const author = 'Daniel K. Levitin';
-const pages = 292;
-const read = 'In Progress';
+// const title = 'A Field Guide to Lies';
+// const author = 'Daniel K. Levitin';
+// const pages = 292;
+// const read = 'In Progress';
 
-
-// add input to object
-let book = new Book(title, author, pages, read);
 
 // add book object to library array
-addBookLibrary = () => {myLibrary.push(book)};
+addBookLibrary = () => {
+    
+    // get user input
+    for (let nInput = 1; nInput <5; nInput++){
+        
+        switch (nInput){
+            case 1:
+                title = document.querySelector('.title').value;
+                break;
+            
+            case 2:
+                author = document.querySelector('.author').value;
+                break;
+
+            case 3:
+                pages = document.querySelector('.pages').value;
+                break;
+
+            case 4:
+                read = document.querySelector('.readStatus').value;
+                break;            
+        };
+    };
+
+    // add input to object
+    let book = new Book(title, author, pages, read);
+    
+    // add book object to library array
+    myLibrary.push(book)};
 
 // create book card
 createBookCard = (title, author, pages, read) => {
@@ -61,4 +86,4 @@ createBookCard = (title, author, pages, read) => {
 
 // add event listener
 const addButton = document.querySelector(".addBook");
-addButton.addEventListener('click', createBookCard);
+addButton.addEventListener('click', addBookLibrary);
