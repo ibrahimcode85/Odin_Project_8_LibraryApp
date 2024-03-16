@@ -85,12 +85,45 @@ createBookCard = (title, author, pages, read) => {
     bookRead.setAttribute('class', 'book-read');
     bookRead.textContent = `Read status: ${read}`;
 
-    // append book elements to card
-    bookCard.appendChild(bookTitle);
-    bookCard.appendChild(bookAuthor); 
-    bookCard.appendChild(bookPages); 
-    bookCard.appendChild(bookRead);
-    
+    // create wrapper for all book info and append info to wrapper
+    let infoWrapper = document.createElement('div');
+    infoWrapper.setAttribute('class', 'card-info-wrapper');
+
+    infoWrapper.appendChild(bookTitle);
+    infoWrapper.appendChild(bookAuthor); 
+    infoWrapper.appendChild(bookPages); 
+    infoWrapper.appendChild(bookRead);
+
+    // create action icon element
+    let imgDelete = document.createElement('img');
+    imgDelete.setAttribute('src', 'assets/close.png');
+    imgDelete.setAttribute('class', 'delete');
+
+    let imgInfo = document.createElement('img');
+    imgInfo.setAttribute('src', 'assets/info.png');
+    imgInfo.setAttribute('class', 'status');
+
+    let imgUp = document.createElement('img');
+    imgUp.setAttribute('src', 'assets/up.png');
+    imgUp.setAttribute('class', 'up');
+
+    let imgDown = document.createElement('img');
+    imgDown.setAttribute('src', 'assets/down.png');
+    imgDown.setAttribute('class', 'down');
+
+    // create wrapper for action item and append icon to wrapper
+    let actionWrapper = document.createElement('div');
+    actionWrapper.setAttribute('class', 'card-action-wrapper');
+
+    actionWrapper.appendChild(imgDelete);
+    actionWrapper.appendChild(imgInfo);
+    actionWrapper.appendChild(imgUp);
+    actionWrapper.appendChild(imgDown);
+
+    // append wrappers to card element
+    bookCard.appendChild(infoWrapper);
+    bookCard.appendChild(actionWrapper);
+
     // add to library
     const library = document.querySelector('.library');
     library.appendChild(bookCard);
