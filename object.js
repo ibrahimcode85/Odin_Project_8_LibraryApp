@@ -39,7 +39,7 @@ addBookLibrary = () => {
     myLibrary.push(book);
 
     // add book card based on the new input
-    createBookCard(title, author, pages, read);
+    createBookCard(title, author, pages, read); 
 };
 
 // create book card
@@ -48,6 +48,22 @@ createBookCard = (title, author, pages, read) => {
     // create book card
     let bookCard = document.createElement('div');
     bookCard.setAttribute('class', 'book-card');
+
+        // update book card ID based on read-status input
+        // this will affect card styling
+        switch (read){
+            case "Not Read":
+                bookCard.setAttribute('id', 'notRead');
+                break;
+
+            case "In Progress":
+                bookCard.setAttribute('id', 'inProgress');
+                break;
+
+            case "Read":
+                bookCard.setAttribute('id', 'read');
+                break;
+        };
     
     // title element
     let bookTitle = document.createElement('div');
