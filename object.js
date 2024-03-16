@@ -83,5 +83,5 @@ createBookCard = (title, author, pages, read) => {
 
 
 // add event listener
-const addButton = document.querySelector(".addBook");
+const addButton = document.querySelector(".button-addBook");
 addButton.addEventListener('click', addBookLibrary);

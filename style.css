@@ -1,18 +1,41 @@
 body{
     margin: 0px;
+    padding: 0px;
     font-family: "Roboto", sans-serif;
+    background-image: url('book-img.jpg');
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(233, 230, 230, 0.6);
+    align-items: center;
+    justify-items: center;
+    margin: 10px 5px;
+}
+
+.app-title{
+    font-size: 5rem;
+    font-weight: bolder;
+    padding: 15px;
+    background-color: rgb(233, 230, 230, 0.2);
 }
 
 .user-input{
-    border: 1px solid gray;
-    background-color: rgb(233, 230, 230);
+    grid-row: 1 / 2;
+    /* border: 1px solid gray; */
     margin: 10px 5px;
     padding: 10px;
+    width: 90%;
+}
+
+.input-title{
+    margin: 10px 5px;
 }
 
 .library{
-    border: 1px solid gray;
-    background-color: rgb(233, 230, 230);
+    /* border: 1px solid gray; */
+    background-color: rgb(233, 230, 230, 0.6);
     margin: 10px 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -42,6 +65,7 @@ body{
 .book-title{
     font-size: 2.5rem;
     font-weight: bolder;
+    font-style: italic;
     margin: 5px 15px;
 
 }
@@ -52,4 +76,37 @@ body{
     font-size: 1.5rem;
     color: darkgrey;
     margin: 5px 15px;
+}
+
+input, select{
+    padding: 5px;
+    margin: 5px;
+    font-size: 1.1rem;
+    font-family: "Roboto" sans-serif;
+}
+
+input[type="text"]{
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+label{
+    display: inline-block;
+    width: 75px;
+    margin: 5px 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.button-addBook{
+    padding: 5px 20px;
+    margin: 10px 10px 0px 90px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(32, 123, 250);
+    border-radius: 5px;
+    border: 1px solid grey;
+    cursor: pointer;
 }
