@@ -7,13 +7,6 @@ function Book(title, author, pages, read){
     this.read   = read;
 };
 
-// temporary user input
-// const title = 'A Field Guide to Lies';
-// const author = 'Daniel K. Levitin';
-// const pages = 292;
-// const read = 'In Progress';
-
-
 // add book object to library array
 addBookLibrary = () => {
     
@@ -43,7 +36,11 @@ addBookLibrary = () => {
     let book = new Book(title, author, pages, read);
     
     // add book object to library array
-    myLibrary.push(book)};
+    myLibrary.push(book);
+
+    // add book card based on the new input
+    createBookCard(title, author, pages, read);
+};
 
 // create book card
 createBookCard = (title, author, pages, read) => {
@@ -78,8 +75,9 @@ createBookCard = (title, author, pages, read) => {
     bookCard.appendChild(bookPages); 
     bookCard.appendChild(bookRead);
     
-    // test add to body
-    document.body.appendChild(bookCard)
+    // add to library
+    const library = document.querySelector('.library');
+    library.appendChild(bookCard);
 
 };
 
