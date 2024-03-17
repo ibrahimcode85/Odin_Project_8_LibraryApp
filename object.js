@@ -45,7 +45,7 @@ addBookLibrary = () => {
 // create book card
 createBookCard = (title, author, pages, read) => {
     
-    // create book card
+    // create book card container
     let bookCard = document.createElement('div');
     bookCard.setAttribute('class', 'book-card');
 
@@ -130,7 +130,87 @@ createBookCard = (title, author, pages, read) => {
 
 };
 
+// delete card
+deleteCard = (event) =>{
+    if (event.target.className === 'delete'){
+        cardSelection = (event.target.parentNode).parentNode;
+        cardSelection.remove();
+    };
+};
+
+// change card status
+changeStatus = (event) =>{
+    if (event.target.className === 'status'){
+        cardSelection = (event.target.parentNode).parentNode;
+        cardId = cardSelection.id;
+
+        // toggle card id
+        switch (cardId){
+            case 'notRead':
+                cardSelection.id = 'inProgress';
+                cardSelection.querySelector('.book-read').textContent = 'Read status: In Progress';
+                break;
+
+            case 'inProgress':
+                cardSelection.id = 'read';
+                cardSelection.querySelector('.book-read').textContent = 'Read status: Read';
+                break;
+
+            case 'read':
+                cardSelection.id = 'notRead';
+                cardSelection.querySelector('.book-read').textContent = 'Read status: Not Read';
+                break;
+        };
+
+
+
+    };
+};
+
+// promote card UP
+moveUp = (event) =>{
+    if (event.target.className === 'up'){
+        cardSelection = (event.target.parentNode).parentNode;
+        cardPrevious = cardSelection.previousElementSibling;
+        
+        if (cardPrevious != null){
+            cardSelection.parentNode.insertBefore(cardSelection,cardPrevious);
+        };
+        
+    };
+}
+
+// demote card DOWN
+moveDown = (event) =>{
+    if (event.target.className === 'down'){
+        cardSelection = (event.target.parentNode).parentNode;
+        cardNext = cardSelection.nextElementSibling;
+
+        if (cardNext != null){
+            if (cardNext.nextElementSibling != null){
+                cardSelection.parentNode.insertBefore(cardSelection,cardNext.nextElementSibling);
+            }else{
+                cardSelection.parentNode.appendChild(cardSelection);
+            }
+            
+        };
+        
+    };
+};
+
 
 // add event listener
 const addButton = document.querySelector(".button-addBook");
 addButton.addEventListener('click', addBookLibrary);
+
+const deleteCardButton = document.querySelector('.library');
+deleteCardButton.addEventListener('click', deleteCard);
+
+const changeCardStatusButton = document.querySelector('.library');
+changeCardStatusButton.addEventListener('click', changeStatus);
+
+const promoteCardUp = document.querySelector('.library');
+promoteCardUp.addEventListener('click', moveUp);
+
+const demoteCardDown = document.querySelector('.library');
+demoteCardDown.addEventListener('click', moveDown);
